@@ -39,8 +39,8 @@ The brutal truths from the frontlines of OS warfare. Learn fast or cry later.
     <h3>• Partition or Ragequit</h3>
 </div>
 
-- 1 TiB drive? Don’t wipe it like a savage.  
-- Partitioning is your friend; separate `/home` so you can toss OSes around like candy.  
+- Big drive? Don’t wipe it like a savage.  
+- Partitioning is your friend.
 
 <div>
     <h3>• Experiment Without Casualties</h3>
