@@ -42,33 +42,33 @@
   <summary>Repo overview</summary>
   
     Dots/
-    ├── bootstrap.sh                # Main entry point, sources modular scripts
-    ├── config                      # Contains files pointing to $HOME/.config
-    │   ├── fish                    # Fish config files
-    │   ├── foot                    # Foot config files
-    │   ├── fuzzel                  # Fuzzel config files
-    │   ├── hypr                    # Hyprland config files (For Arch, end-4's dots)
-    │   └── kitty                   # Kitty config files
-    ├── home                        # Contains files pointing to $HOME
-    │   ├── shellconf               # Alis and function files to be listed here
-    │       ├── function.fish       Functions For Fish
-    │       ├── function.zsh
-    │   │   ├── z_alias.fish        # Alias for fish
-    │   │   └── z_alias.zsh         # Alias for Z Shell
-    │   ├── .bashrc                 # Bash config
-    │   └── .zshrc                  # Zsh config
+    ├── bootstrap.sh                 Main entry point, sources modular scripts
+    ├── config                       Contains files pointing to $HOME/.config
+    │   ├── fish                     Fish config files
+    │   ├── foot                     Foot config files
+    │   ├── fuzzel                   Fuzzel config files
+    │   ├── hypr                     Hyprland config files (For Arch, end-4's dots)
+    │   └── kitty                    Kitty config files
+    ├── home                         Contains files pointing to $HOME
+    │   ├── shellconf                Alis and function files to be listed here
+    │       ├── function.fish        Functions for Fish
+    │       ├── function.zsh         Functions for Z Shell(zsh)
+    │   │   ├── z_alias.fish         Alias for fish
+    │   │   └── z_alias.zsh          Alias for Z Shell
+    │   ├── .bashrc                  Bash config
+    │   └── .zshrc                   Zsh config
     ├── pkgs
-    │   ├── arch.txt                # Arch-specific packages
-    │   ├── common.txt              # Packages installed on all distros
-    │   ├── debian.txt              # Debian/Ubuntu-specific packages
-    │   ├── fedora.txt              # Fedora-specific packages
-    │   └── nix.txt                 # Nix package manager(Works in NixOS & w/o)
+    │   ├── arch.txt                 Arch-specific packages
+    │   ├── common.txt               Packages installed on all distros
+    │   ├── debian.txt               Debian/Ubuntu-specific packages
+    │   ├── fedora.txt               Fedora-specific packages
+    │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
     └── scripts
-        ├── install_flatpak.sh      # Installs Flatpak apps
-        ├── install_pkgs.sh         # Package installation logic
-        ├── setup_shell.sh          # Configures and sources your shell
-        ├── stow_configs.sh         # Links dotfiles via stow
-        └── update_system.sh        # Updates entire system
+        ├── install_flatpak.sh       Installs Flatpak apps
+        ├── install_pkgs.sh          Package installation logic
+        ├── setup_shell.sh           Configures and sources your shell
+        ├── stow_configs.sh          Links dotfiles via stow
+        └── update_system.sh         Updates entire system
 
 - Everything is written in `bash`
 
