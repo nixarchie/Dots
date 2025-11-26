@@ -122,7 +122,7 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 - **The user is expected to backup important files beforehand**.
 
-- The `home/shellconf/*` files should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
+- The present inside `home/shellconf/` should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
 
 - The hyprland dots are incomplete and not fully functunal, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
