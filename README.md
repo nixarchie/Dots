@@ -32,9 +32,7 @@
 - Just run
 
    ```bash
-   git clone https://github.com/TGGamer1/Dots.git ~/Dots
-   cd ~/Dots
-   ./bootstrap.sh
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/bootstrap.sh)"
    ```
 
 - The name of the install script is `bootstrap.sh`.
