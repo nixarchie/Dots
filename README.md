@@ -72,7 +72,7 @@
 
 - Everything is written in `bash`
 
-- Note: Only top-level files are shown; each config folder contains multiple dotfiles.
+- Note: Only some top-level files are shown; each config folder contains multiple dotfiles.
 
 </details>
 
@@ -122,9 +122,9 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 - **The user is expected to backup important files beforehand**.
 
-- The `home/shellconf/alias.fish` and `alias.zsh` file should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
+- The `home/shellconf/*` files should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
 
-- `Oh-My-Zsh` and `Fisher` should be installed by the user prior to running `setup_shell.sh`.
+- The hyprland dots are incomplete and not fully functunal, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
 - The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
 
