@@ -51,8 +51,8 @@
     │   └── kitty                    Kitty config files
     ├── home                         Contains files pointing to $HOME
     │   ├── shellconf                Alis and function files to be listed here
-    │       ├── function.fish        Functions for Fish
-    │       ├── function.zsh         Functions for Z Shell(zsh)
+    │   │   ├── function.fish        Functions for Fish
+    │   │   ├── function.zsh         Functions for Z Shell(zsh)
     │   │   ├── z_alias.fish         Alias for fish
     │   │   └── z_alias.zsh          Alias for Z Shell
     │   ├── .bashrc                  Bash config
