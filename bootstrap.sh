@@ -13,7 +13,8 @@ run_cmd() {
 
 # ─── Vars ─────────────────────────────────
 DOTFILES_DIR="$HOME/Dots"
-SCRIPTS_DIR="$DOTFILES_DIR/scripts"
+SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
+PYTHON_DIR="$DOTFILES_DIR/scripts/python"
 PKG_DIR="$DOTFILES_DIR/pkgs"
 AUTO_MODE=false
 SKIP_UPDATE=false
@@ -40,17 +41,7 @@ cd "$DOTFILES_DIR"
 USER_SHELL=$(basename "$SHELL")
 
 # ─── Detect distro ────────────────────────
-if [ -f /etc/arch-release ]; then
-    DISTRO="arch"
-elif [ -f /etc/debian_version ]; then
-    DISTRO="debian"
-elif grep -q "Fedora" /etc/os-release 2>/dev/null; then
-    DISTRO="fedora"
-elif grep -q "NixOS" /etc/os-release 2>/dev/null; then
-    DISTRO="nix"
-else
-    DISTRO="unknown"
-fi
+DISTRO=$(python3 $PYTHON_DIR/detect_os.py)
 
 # ─── Safe read wrapper ────────────────────
 safe_read() {
@@ -106,18 +97,39 @@ show_menu() {
         "Exit"
     )
 
-    PS3=$'\nChoose what to run: '
-    select opt in "${options[@]}"; do
-        case "$opt" in
-            "Update System Packages") run_script "update_system.sh" ;;
-            *install_pkgs.sh*)       run_script "install_pkgs.sh" ;;
-            *stow_configs.sh*)       run_script "stow_configs.sh" ;;
-            *setup_shell.sh*)        run_script "setup_shell.sh" ;;
-            *install_flatpak.sh*)    run_script "install_flatpak.sh" ;;
-            "Exit") log "Goodbye!"; break ;;
-            *) warn "Invalid choice."; ;;
-        esac
-    done
+    #PS3=$'\nChoose what to run: '
+    #select opt in "${options[@]}"; do
+    #    case "$opt" in
+    #        "Update System Packages") run_script "update_system.sh" ;;
+    #        *install_pkgs.sh*)       run_script "install_pkgs.sh" ;;
+    #        *stow_configs.sh*)       run_script "stow_configs.sh" ;;
+    #        *setup_shell.sh*)        run_script "setup_shell.sh" ;;
+    #        *install_flatpak.sh*)    run_script "install_flatpak.sh" ;;
+    #        "Exit") log "Goodbye!"; break ;;
+    #        "q") log "Goodbye!"; break ;;
+    #        *) warn "Invalid choice."; ;;
+    #    esac
+    #done
+    while true; do
+    echo "1) Update System Packages"
+    echo "2) Install Packages"
+    echo "3) Stow Configs"
+    echo "4) Setup Shell"
+    echo "5) Install Flatpaks"
+    echo "6) Exit"
+    read -p $'\nChoose what to run (or q to quit): ' choice
+
+    case "$choice" in
+        1) run_script "update_system.sh" ;;
+        2) run_script "install_pkgs.sh" ;;
+        3) run_script "stow_configs.sh" ;;
+        4) run_script "setup_shell.sh" ;;
+        5) run_script "install_flatpak.sh" ;;
+        6|q|Q) log "Goodbye!"; break ;;
+        *) warn "Invalid choice." ;;
+    esac
+done
+
 }
 
 # ─── Auto Mode ────────────────────────────
