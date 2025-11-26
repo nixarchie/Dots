@@ -36,7 +36,6 @@
    ```
 
 - The name of the install script is `bootstrap.sh`.
-- Clone the git repo in $HOME/Dots only as it is essential for the inner workings.
 
 </details>
 <details>
