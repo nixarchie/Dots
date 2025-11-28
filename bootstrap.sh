@@ -11,6 +11,9 @@ run_cmd() {
     "$@"
 }
 
+echo_cmd()   { echo -e "\033[1;32m───\033[0m $1"; }
+log_cmd()   { echo -e "\033[1;32m────>\033[0m $1"; }
+
 # ─── Vars ─────────────────────────────────
 DOTFILES_DIR="$HOME/Dots"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
@@ -83,9 +86,9 @@ run_script() {
 
 # ─── Menu (Manual Mode) ───────────────────
 show_menu() {
-    log "=== T's Multi-Distro Bootstrap ==="
-    log "Detected shell: $USER_SHELL"
-    log "Detected distro: $DISTRO"
+    log_cmd "=== T's Multi-Distro Bootstrap ==="
+    log_cmd "Detected shell: $USER_SHELL"
+    log_cmd "Detected distro: $DISTRO"
     echo
 
     options=(
@@ -111,12 +114,12 @@ show_menu() {
     #    esac
     #done
     while true; do
-    echo "1) Update System Packages"
-    echo "2) Install Packages"
-    echo "3) Stow Configs"
-    echo "4) Setup Shell"
-    echo "5) Install Flatpaks"
-    echo "6) Exit"
+    echo_cmd "1. Update System Packages"
+    echo_cmd "2. Install Packages"
+    echo_cmd "3. Stow Configs"
+    echo_cmd "4. Setup Shell"
+    echo_cmd "5. Install Flatpaks"
+    echo_cmd "6. Exit"
     read -p $'\nChoose what to run (or q to quit): ' choice
 
     case "$choice" in
@@ -125,7 +128,7 @@ show_menu() {
         3) run_script "stow_configs.sh" ;;
         4) run_script "setup_shell.sh" ;;
         5) run_script "install_flatpak.sh" ;;
-        6|q|Q) log "Goodbye!"; break ;;
+        6|q|Q) echo_cmd "Goodbye!"; break ;;
         *) warn "Invalid choice." ;;
     esac
 done
