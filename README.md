@@ -35,19 +35,18 @@
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/install.sh)"
    ```
 
-- The name of the install script is `install.sh`.
+- Or clone this repo and run `./install.sh`
 
 </details>
 <details>
   <summary>Repo overview</summary>
   
     Dots/
-    ├── bootstrap.sh                 Main entry point, sources modular scripts
+    ├── install.sh                 Main entry point, sources modular scripts
     ├── config                       Contains files pointing to $HOME/.config
     │   ├── fish                     Fish config files
     │   ├── foot                     Foot config files
     │   ├── fuzzel                   Fuzzel config files
-    │   ├── hypr                     Hyprland config files (For Arch, end-4's dots)
     │   └── kitty                    Kitty config files
     ├── home                         Contains files pointing to $HOME
     │   ├── shellconf                Alis and function files to be listed here
@@ -64,13 +63,10 @@
     │   ├── fedora.txt               Fedora-specific packages
     │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
     └── scripts
-        ├── install_flatpak.sh       Installs Flatpak apps
-        ├── install_pkgs.sh          Package installation logic
-        ├── setup_shell.sh           Configures and sources your shell
-        ├── stow_configs.sh          Links dotfiles via stow
-        └── update_system.sh         Updates entire system
+        ├── bash                     Contains bash scripts
+        └── python                   Contains python scripts
 
-- Everything is written in `bash`
+- Everything is written in `bash` and `python`.
 
 - Note: Only some top-level files are shown; each config folder contains multiple dotfiles.
 
@@ -91,7 +87,7 @@ Or use `--skip-update` with `--auto` to automatically install packages and link 
 Alternately, In a POSIX-Compilant Shell:
 
 ```
-source bootstrap.sh
+source install.sh
 ```
 
 `Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
@@ -110,21 +106,21 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
   - install_pkgs.sh
 
-  - stow_configs.sh
+  - symlink.sh
 
   - setup_shell.sh
 
-  - install_flatpak.sh
+  - install_flatpak.sh ( Can be ignored)
 
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
-- Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them manually **but** it is not recommanded as it will break some things.
+- Scripts are to be run one at a time through install.sh.
 
 - **The user is expected to backup important files beforehand**.
 
 - The files present inside `home/shellconf/` should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
 
-- The hyprland dots are incomplete and not fully functunal, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
+- The hyprland dots are incomplete and not fully functunal and are thus removed, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
 - The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
 
