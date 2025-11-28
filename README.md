@@ -32,10 +32,10 @@
 - Just run
 
    ```bash
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/bootstrap.sh)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/install.sh)"
    ```
 
-- The name of the install script is `bootstrap.sh`.
+- The name of the install script is `install.sh`.
 
 </details>
 <details>
@@ -127,6 +127,17 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 - The hyprland dots are incomplete and not fully functunal, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
 - The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
+
+- Before running this script, please backup or remove the following directories/files if they already exist:
+  - ~/.bashrc
+  - ~/.zshrc
+  - ~/shellconf
+  - ~/.config/fish
+  - ~/.config/kitty
+  - ~/.config/fuzzel
+  - ~/.config/zshrc.d
+  - ~/.config/foot
+
 
 <div align="center">
     <h3> Enjoy your setup! 🚀 </h3>
