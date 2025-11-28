@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-# Colorful command runner
-run_cmd() {
-    echo -e "\033[1;34m>>> $@\033[0m"
-    "$@"
-}
-
-log "Installing common packages..."
+log_cmd "Installing common packages..."
 
 install_packages() {
     local file="$1"
@@ -22,23 +16,23 @@ install_packages() {
     case "$DISTRO" in
         arch)
             if command -v yay &>/dev/null; then
-                log "Installing via yay: ${pkgs[*]}"
+                log_cmd "Installing via yay: ${pkgs[*]}"
                 yay -S --noconfirm "${pkgs[@]}"
             else
-                log "Installing via pacman: ${pkgs[*]}"
+                log_cmd "Installing via pacman: ${pkgs[*]}"
                 sudo pacman -S --noconfirm "${pkgs[@]}"
             fi
             ;;
         debian)
-            log "Installing via apt: ${pkgs[*]}"
+            log_cmd "Installing via apt: ${pkgs[*]}"
             sudo apt install -y "${pkgs[@]}"
             ;;
         fedora)
-            log "Installing via dnf: ${pkgs[*]}"
+            log_cmd "Installing via dnf: ${pkgs[*]}"
             sudo dnf install -y "${pkgs[@]}"
             ;;
         nix)
-            log "Installing via nix: ${pkgs[*]}"
+            log_cmd "Installing via nix: ${pkgs[*]}"
             local nixpkgs_args=()
             for pkg in "${pkgs[@]}"; do
                 nixpkgs_args+=("nixpkgs.$pkg")
@@ -47,10 +41,10 @@ install_packages() {
             ;;
         *)
             if command -v brew &>/dev/null; then
-                log "Installing via brew: ${pkgs[*]}"
+                log_cmd "Installing via brew: ${pkgs[*]}"
                 brew install "${pkgs[@]}"
             elif command -v flatpak &>/dev/null; then
-                log "Installing via flatpak: ${pkgs[*]}"
+                log_cmd "Installing via flatpak: ${pkgs[*]}"
                 flatpak install -y "${pkgs[@]}"
             else
                 error "No supported package manager"
@@ -61,7 +55,7 @@ install_packages() {
 
 # Arch: install yay if missing
 if [ "$DISTRO" = "arch" ] && ! command -v yay &>/dev/null; then
-    log "Installing yay (AUR helper)..."
+    log_cmd "Installing yay (AUR helper)..."
     run_cmd sudo pacman -S --needed --noconfirm base-devel git
     tmpdir=$(mktemp -d)
     run_cmd git clone https://aur.archlinux.org/yay.git "$tmpdir"
