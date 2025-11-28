@@ -94,6 +94,7 @@ source install.sh
 Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been tested and gave errors.
 
 **Optional:** Customize the pkgs/*.txt files to include the packages you want.
+**WARNING:** Do not remove python3 form the pkgs/*.txt files.
 
 <div align="center">
     <h2>• notes •</h2>
@@ -102,7 +103,7 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 - The scripts should be sourced in the following order for proper setup:
 
-  - update_system.sh ( **WARNING** the setup may not function properly without it)
+  - update_system.sh ( **WARNING:** the setup may not function properly without it)
 
   - install_pkgs.sh
 
