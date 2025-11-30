@@ -32,7 +32,8 @@ pretty_path() {
 }
 
 # ─── Directories & Vars ─────────────────────────
-DOTFILES_DIR="$HOME/Dots"
+DOTFILES_DIR="$(pwd)"
+export DOTFILES_DIR
 BACKUP_DIR="$HOME/.Dots_bak"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
@@ -53,7 +54,7 @@ done
 # ─── Ensure Dotfiles Repo Exists ───────────────
 if [[ ! -d "$DOTFILES_DIR" ]]; then
     header "Dotfiles repo not found — cloning..."
-    run_cmd git clone https://github.com/TGGamer1/Dots.git "$DOTFILES_DIR"
+    run_cmd git clone https://github.com/nixarchie/Dots.git "$DOTFILES_DIR"
 fi
 
 #log "Changing directory to $DOTFILES_DIR"
@@ -62,7 +63,13 @@ cd "$DOTFILES_DIR"
 
 # ─── Detect Shell & Distro ──────────────────────
 USER_SHELL=$(basename "$SHELL")
-DISTRO=$(python3 "$PYTHON_DIR/detect_os.py")
+
+if [ "$(command -v python3)" ]; then
+    DISTRO=$(python3 "$PYTHON_DIR/detect_os.py")
+else 
+    DISTRO=$($SCRIPTS_DIR/detect_os.bash)
+fi
+
 
 # ─── Safe Read Wrapper ─────────────────────────
 safe_read() {
