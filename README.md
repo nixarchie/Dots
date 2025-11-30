@@ -23,7 +23,7 @@
 - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
 - **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
 - **Transparent installation**: Every command is shown before it's run.
-- **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using stow.
+- **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using python.
 
 </details>
 <details>
@@ -79,10 +79,10 @@
     <h3></h3>
 </div>
 
-Run `bootstrap.sh` with `--auto` to automatically install packages and link configs.
+Run `install.sh` with `--auto` to automatically install packages and link configs.
 Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system.
 
-<h4>Please insure bash is installed and available.</h4>
+<h4>Please insure bash and the latest python3 version is installed and available.</h4>
 
 Alternately, In a POSIX-Compilant Shell:
 
@@ -119,9 +119,9 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 - **The user is expected to backup important files beforehand**.
 
-- The files present inside `home/shellconf/` should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
+- The files present inside `home/shellconf` should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
 
-- The hyprland dots are incomplete and not fully functunal and are thus removed, if you wish to use the same setup as me, use this <a href="https://https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
+- The hyprland dots are incomplete and not fully functunal and are thus removed, if you wish to use the approx. same setup as me, use this <a href="https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
 - The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
 

@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>【 T’s Hardcore Golden Rules for Distrohoppers 】</h1>
+    <h1>【 Nixie’s Hardcore Golden Rules for Distrohoppers 】</h1>
     <h3></h3>
 </div>
 
