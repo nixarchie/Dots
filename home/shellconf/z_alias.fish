@@ -69,7 +69,6 @@ alias q='qs -c ii'
 # ─── Make Test User
 alias mktest="sudo useradd -m -G wheel -s /bin/bash testuser"
 
-
 # ──── ALiases for Functions ────────────────────────────────────────────────────
 # ─── Defined in shellconf/function.fish
 # ── For ll
