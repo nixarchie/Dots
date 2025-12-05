@@ -43,7 +43,7 @@ alias zshconf="nvim ~/.zshrc"
 alias fishconf="nvim ~/.config/fish/config.fish"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias hyprconf="z ~/.config/hypr/hyprland"
-alias aliasconf="nvim ~/shellconf/alias.fish"
+alias aliasconf="nvim ~/shellconf/"
 
 # ─── Distro-specific pkg management
 alias upgrade="yay -Syu --noconfirm"
@@ -65,6 +65,10 @@ alias cat="bat"
 alias tree="eza --tree --icons --color=always --git"
 alias cd="z"
 alias q='qs -c ii'
+
+# ─── Make Test User
+alias mktest="sudo useradd -m -G wheel -s /bin/bash testuser"
+
 
 # ──── ALiases for Functions ────────────────────────────────────────────────────
 # ─── Defined in shellconf/function.fish
