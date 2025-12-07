@@ -32,7 +32,7 @@ pretty_path() {
 }
 
 # ─── Directories & Vars ─────────────────────────
-DOTFILES_DIR="$HOME"
+DOTFILES_DIR="$HOME/Dots"
 export DOTFILES_DIR
 BACKUP_DIR="$HOME/.Dots_bak"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
