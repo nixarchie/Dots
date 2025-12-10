@@ -1,8 +1,6 @@
-<div>
-<center>
+<div align=center>
 <h1>【 My Lore 】<h3></h3></h1>
 <h3></h3>
-</center>
 </div>
 
 So the main journy was : <br>
