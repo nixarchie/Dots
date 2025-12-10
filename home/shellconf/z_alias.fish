@@ -23,9 +23,9 @@ zoxide init fish | source
 atuin init fish | source
 
 # ── Homebrew
-if test -d /home/linuxbrew/.linuxbrew
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-end
+#if test -d /home/linuxbrew/.linuxbrew
+#    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#end
 
 # ── Node Version Manager (NVM)
 set -x NVM_DIR $HOME/.nvm

@@ -18,3 +18,5 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 find ~/shellconf/ -type f -name "*.zsh" | while read -r file; do
   source "$file"
 done
+
+source ~/.config/zshrc.d/dots-hyprland.zsh
