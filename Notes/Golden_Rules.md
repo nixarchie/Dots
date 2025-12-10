@@ -12,10 +12,9 @@ Before you dive into the rules, a little about the author:
 
 I’ve been through the trenches:  
 
-- 
-    $$
-    \text{Debian} \longrightarrow \text{FreeBSD} \longrightarrow (\text{NixOS} \leftrightarrow \text{FreeBSD})_i \longrightarrow \text{Arch} \longrightarrow \text{FreeBSD} \longrightarrow \text{Void}
-    $$
+$$
+\text{Debian} \longrightarrow \text{FreeBSD} \longrightarrow (\text{NixOS} \leftrightarrow \text{FreeBSD})_i \longrightarrow \text{Arch} \longrightarrow \text{FreeBSD} \longrightarrow \text{Void}
+$$
 
 - Multiple full wipes (don’t try this at home 😅)  
 - Experimented with XFCE, Qtile, Niri, Hyprland, Kde, Gnome, and more exotic WMs  
@@ -74,7 +73,7 @@ The brutal truths from the frontlines of OS warfare. Learn fast or cry later.
 </div>
 
 - `dmesg`, `/var/log`, `journalctl`—read them.  
-- GDM, Wayland, X11—drama queens. They love to mess with you. Logs = truth serum.
+- GDM, Wayland, X11—drama queens. They love to mess with you. Logs $=$ truth serum.
 
 <div>
     <h3>• Don’t Chase Shiny Objects Blindly</h3>
