@@ -32,7 +32,7 @@
 - Just run
 
    ```bash
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/install.sh)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/get)"
    ```
 
 - Or clone this repo and run `./install.sh`
