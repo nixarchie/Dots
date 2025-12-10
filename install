@@ -86,6 +86,7 @@ detect_dotfiles_dir() {
 #detect_dotfiles_dir
 
 # ─── Continue with your existing vars ──────────
+DOTFILES_DIR=local_path
 BACKUP_DIR="$HOME/.Dots_bak"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
