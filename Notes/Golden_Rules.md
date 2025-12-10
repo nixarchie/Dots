@@ -11,10 +11,10 @@ Before you dive into the rules, a little about the author:
 </div>
 
 I’ve been through the trenches:  
-- **Debian → NixOS → FreeBSD → Arch → FreeBSD → Void**
+
 - 
     $$
-    \text{Debian} \;\longrightarrow\; \text{FreeBSD} \;\longrightarrow\; (\text{NixOS} \;\leftrightarrow\; \text{FreeBSD})_i \;\longrightarrow\; \text{Arch} \;\longrightarrow\; \text{FreeBSD} \;\longrightarrow\; \text{Void}
+    \text{Debian} \longrightarrow \text{FreeBSD} \longrightarrow (\text{NixOS} \leftrightarrow \text{FreeBSD})_i \longrightarrow \text{Arch} \longrightarrow \text{FreeBSD} \longrightarrow \text{Void}
     $$
 
 - Multiple full wipes (don’t try this at home 😅)  
