@@ -32,61 +32,61 @@ pretty_path() {
 }
 
 # ─── Determine Dotfiles Directory ─────────────────
-detect_dotfiles_dir() {
-    # If current directory is already a git repo, use it
-    if [ -d ".git" ]; then
-        DOTFILES_DIR="$(pwd)"
-        log "Detected current directory as git repo. Using DOTFILES_DIR=$DOTFILES_DIR"
-        return
-    fi
-
-    # Default location if not already set
-    DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.cache/dots-hyprland}"
-
-    if [ -d "$DOTFILES_DIR/.git" ]; then
-        log "Detected existing Git repo at $DOTFILES_DIR."
-        cd "$DOTFILES_DIR"
-
-        # Check multi-URL origin
-        REMOTE_URLS=$(git remote get-url origin 2>/dev/null || echo "")
-        ALLOWED_URLS=(
-            "https://github.com/nixarchie/Dots.git"
-            "git@github.com:nixarchie/Dots.git"
-        )
-
-        MATCH=false
-        for url in "${ALLOWED_URLS[@]}"; do
-            if [ "$REMOTE_URLS" = "$url" ]; then
-                MATCH=true
-                break
-            fi
-        done
-
-        if [ "$MATCH" = false ]; then
-            warn "Origin URL is not recognized."
-        fi
-
-        # Pull latest changes
-        log "Updating existing repo..."
-        git fetch origin main --depth=1
-        git reset --hard origin/main
-        git branch --set-upstream-to=origin/main main >/dev/null 2>&1 || true
-    else
-        # Repo doesn't exist → clone
-        log "Cloning repo into $DOTFILES_DIR..."
-        mkdir -p "$DOTFILES_DIR"
-        git clone https://github.com/nixarchie/Dots.git "$DOTFILES_DIR"
-        cd "$DOTFILES_DIR"
-    fi
-
-    export DOTFILES_DIR
-}
+# detect_dotfiles_dir() {
+#     # If current directory is already a git repo, use it
+#     if [ -d ".git" ]; then
+#         DOTFILES_DIR="$(pwd)"
+#         log "Detected current directory as git repo. Using DOTFILES_DIR=$DOTFILES_DIR"
+#         return
+#     fi
+# 
+#     # Default location if not already set
+#     DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.cache/dots-hyprland}"
+# 
+#     if [ -d "$DOTFILES_DIR/.git" ]; then
+#         log "Detected existing Git repo at $DOTFILES_DIR."
+#         cd "$DOTFILES_DIR"
+# 
+#         # Check multi-URL origin
+#         REMOTE_URLS=$(git remote get-url origin 2>/dev/null || echo "")
+#         ALLOWED_URLS=(
+#             "https://github.com/nixarchie/Dots.git"
+#             "git@github.com:nixarchie/Dots.git"
+#         )
+# 
+#         MATCH=false
+#         for url in "${ALLOWED_URLS[@]}"; do
+#             if [ "$REMOTE_URLS" = "$url" ]; then
+#                 MATCH=true
+#                 break
+#             fi
+#         done
+# 
+#         if [ "$MATCH" = false ]; then
+#             warn "Origin URL is not recognized."
+#         fi
+# 
+#         # Pull latest changes
+#         log "Updating existing repo..."
+#         git fetch origin main --depth=1
+#         git reset --hard origin/main
+#         git branch --set-upstream-to=origin/main main >/dev/null 2>&1 || true
+#     else
+#         # Repo doesn't exist → clone
+#         log "Cloning repo into $DOTFILES_DIR..."
+#         mkdir -p "$DOTFILES_DIR"
+#         git clone https://github.com/nixarchie/Dots.git "$DOTFILES_DIR"
+#         cd "$DOTFILES_DIR"
+#     fi
+# 
+#     export DOTFILES_DIR
+# }
 
 # ─── Initialize Dotfiles Repo ───────────────────
 #detect_dotfiles_dir
 
 # ─── Continue with your existing vars ──────────
-DOTFILES_DIR=local_path
+DOTFILES_DIR="$(pwd)"
 BACKUP_DIR="$HOME/.Dots_bak"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
