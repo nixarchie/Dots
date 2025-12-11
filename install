@@ -39,51 +39,8 @@ source ./scripts/lib/dist-determine.sh
 
 # ─── Detect Shell & Distro ──────────────────────
 USER_SHELL=$(basename "$SHELL")
-
-#if [ "$(command -v python3)" ]; then
-#    DISTRO=$(python3 "$PYTHON_DIR/detect_os.py")
-#else 
-#    DISTRO=$($SCRIPTS_DIR/detect_os.bash)
-#fi
 DISTRO=$OS_GROUP_ID
 
-
-# ─── Safe Read Wrapper ─────────────────────────
-#safe_read() {
-#    local prompt="$1" varname="$2"
-#    if [[ -t 0 ]]; then
-#        x read -rp "$prompt" "$varname"
-#    elif [[ -e /dev/tty ]]; then
-#        x read -rp "$prompt" "$varname" </dev/tty
-#    else
-#        log "Non-interactive environment — defaulting to yes."
-#        eval "$varname='y'"
-#    fi
-#}
-
-# ─── Run Scripts ────────────────────────────────
-#run_script() {
-#    local script_name="$1"
-#    local script_path="$SCRIPTS_DIR/$script_name"
-#
-#    if [[ ! -f "$script_path" ]]; then
-#        warn "$script_name not found, skipping."
-#        return
-#    fi
-#
-#    if $AUTO_MODE; then
-#        log_cmd "Running $script_name..."
-#        source "$script_path"
-#    else
-#        local choice
-#        safe_read "Run $script_name? [Y/n] " choice
-#        case "$choice" in
-#            [nN]*) log_cmd "Skipping $script_name" ;;
-#            *) log_cmd "Running $script_name..."; source "$script_path" ;;
-#        esac
-#    fi
-#    echo
-#}
 
 # ─── Menu (Manual Mode) ─────────────────────────
 show_menu() {
@@ -91,7 +48,7 @@ show_menu() {
     log_cmd "Detected distro: $DISTRO"
     log_cmd "Detected shell: $USER_SHELL"
 
-
+    # Menu titles
     options=(
         "Update System Packages"
         "Install Packages"
@@ -101,6 +58,7 @@ show_menu() {
         "Exit"
     )
 
+    # Matching scripts (relative to SCRIPTS_DIR)
     scripts=(
         "update_system.sh"
         "install_pkgs.sh"
@@ -116,11 +74,11 @@ show_menu() {
 
         read -rp $'\nChoose what to run (or q to quit): ' choice
         case "$choice" in
-            1) v "${scripts[0]}" ;;
-            2) v "${scripts[1]}" ;;
-            3) v "${scripts[2]}" ;;
-            4) v "${scripts[3]}" ;;
-            5) v "${scripts[4]}" ;;
+            1) v "$SCRIPTS_DIR/${scripts[0]}" ;;
+            2) v "$SCRIPTS_DIR/${scripts[1]}" ;;
+            3) v "$SCRIPTS_DIR/${scripts[2]}" ;;
+            4) v "$SCRIPTS_DIR/${scripts[3]}" ;;
+            5) v "$SCRIPTS_DIR/${scripts[4]}" ;;
             6|q|Q) echo_cmd "Goodbye!"; break ;;
             *) warn "Invalid choice." ;;
         esac
@@ -135,19 +93,31 @@ if $AUTO_MODE; then
     log_cmd "Detected distro: $DISTRO"
     log_cmd "Detected shell: $USER_SHELL"
 
+    # System Update
     if ! $SKIP_UPDATE; then
         echo_cmd "Running system update..."
-        x "update_system.sh"
+        v "$SCRIPTS_DIR/update_system.sh"
     else
-        x "Skipping system update as requested."
+        echo_cmd "Skipping system update as requested."
     fi
 
-    for script in "install_pkgs.sh" "stow_configs.sh" "setup_shell.sh" "install_flatpak.sh"; do
-        x "$script"
+    # Sequential auto-run scripts
+    for script in \
+        "install_pkgs.sh" \
+        "stow_configs.sh" \
+        "setup_shell.sh" \
+        "install_flatpak.sh"
+    do
+        if [[ -f "$SCRIPTS_DIR/$script" ]]; then
+            v "$SCRIPTS_DIR/$script"
+        else
+            warn "Missing script: $SCRIPTS_DIR/$script"
+        fi
     done
 
     echo_cmd "Bootstrap complete. Enjoy your setup 🎉"
+
 else
-    # showfun show_menu
     v show_menu
 fi
+
