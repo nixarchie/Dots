@@ -87,7 +87,7 @@ show_menu() {
 }
 
 # ─── Auto Mode Execution ────────────────────────
-if $AUTO_MODE; then
+if ! $AUTO_MODE; then
 
     header "Nixie's Multi-Distro Bootstrap"
     log_cmd "Detected distro: $DISTRO"
@@ -96,7 +96,7 @@ if $AUTO_MODE; then
     # System Update
     if ! $SKIP_UPDATE; then
         echo_cmd "Running system update..."
-        v "$SCRIPTS_DIR/update_system.sh"
+        x "$SCRIPTS_DIR/update_system.sh"
     else
         echo_cmd "Skipping system update as requested."
     fi
