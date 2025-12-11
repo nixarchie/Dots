@@ -23,7 +23,10 @@
 - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
 - **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
 - **Transparent installation**: Every command is shown before it's run.
+
+<!--
 - **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using python.
+-->
 
 </details>
 <details>
@@ -79,8 +82,12 @@
     <h3></h3>
 </div>
 
+<!--
 Run `install.sh` with `--auto` to automatically install packages and link configs.
 Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system.
+-->
+
+If the repo is cloned (one-liner not used) then please use `install` rather `get` for installation.
 
 <h4>Please insure bash and the latest python3 version is installed and available.</h4>
 
