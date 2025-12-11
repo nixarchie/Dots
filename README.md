@@ -44,24 +44,24 @@
     Dots/
     ├── install.sh                 Main entry point, sources modular scripts
     ├── config                       Contains files pointing to $HOME/.config
-    │   ├── fish                     Fish config files
-    │   ├── foot                     Foot config files
-    │   ├── fuzzel                   Fuzzel config files
-    │   └── kitty                    Kitty config files
+    │   ├── fish                     Fish config files
+    │   ├── foot                     Foot config files
+    │   ├── fuzzel                   Fuzzel config files
+    │   └── kitty                    Kitty config files
     ├── home                         Contains files pointing to $HOME
-    │   ├── shellconf                Alis and function files to be listed here
+    │   ├── shellconf                Alis and function files to be listed here
     │   │   ├── function.fish        Functions for Fish
     │   │   ├── function.zsh         Functions for Z Shell(zsh)
-    │   │   ├── z_alias.fish         Alias for fish
+    │   │   ├── z_alias.fish         Alias for fish
     │   │   └── z_alias.zsh          Alias for Z Shell
     │   ├── .bashrc                  Bash config
-    │   └── .zshrc                   Zsh config
+    │   └── .zshrc                   Zsh config
     ├── pkgs
-    │   ├── arch.txt                 Arch-specific packages
-    │   ├── common.txt               Packages installed on all distros
-    │   ├── debian.txt               Debian/Ubuntu-specific packages
-    │   ├── fedora.txt               Fedora-specific packages
-    │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
+    │   ├── arch.txt                 Arch-specific packages
+    │   ├── common.txt               Packages installed on all distros
+    │   ├── debian.txt               Debian/Ubuntu-specific packages
+    │   ├── fedora.txt               Fedora-specific packages
+    │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
     └── scripts
         ├── bash                     Contains bash scripts
         └── python                   Contains python scripts
@@ -145,7 +145,7 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 <h2>• inspirations/copying •</h2>
 
-- This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>’s legendary dotfile structure and their approach to transparent, idempotent setup scripts.
+- This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>'s legendary dotfile structure and their approach to transparent, idempotent setup scripts.
 
 - Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff).
 
