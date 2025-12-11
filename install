@@ -148,6 +148,6 @@ if $AUTO_MODE; then
 
     echo_cmd "Bootstrap complete. Enjoy your setup 🎉"
 else
-    showfun show_menu
+    # showfun show_menu
     v show_menu
 fi
