@@ -44,11 +44,21 @@ def symlink(src: pathlib.Path, dest: pathlib.Path):
 def link_dir(source_dir: pathlib.Path, target_base: pathlib.Path):
     for root, dirs, files in os.walk(source_dir):
         root_path = pathlib.Path(root)
-        for name in files + dirs:
-            src_path = root_path / name
-            rel_path = src_path.relative_to(source_dir)
-            dest_path = target_base / rel_path
-            symlink(src_path, dest_path)
+
+        # link directories first
+        for d in dirs:
+            src = root_path / d
+            rel = src.relative_to(source_dir)
+            dest = target_base / rel
+            symlink(src, dest)
+
+        # then link files
+        for f in files:
+            src = root_path / f
+            rel = src.relative_to(source_dir)
+            dest = target_base / rel
+            symlink(src, dest)
+
 
 def main():
     if not DOTFILES_DIR.exists():

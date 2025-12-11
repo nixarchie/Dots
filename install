@@ -104,7 +104,7 @@ if $AUTO_MODE; then
     # Sequential auto-run scripts
     for script in \
         "install_pkgs.sh" \
-        "stow_configs.sh" \
+        "symlink.sh" \
         "setup_shell.sh" \
         "install_flatpak.sh"
     do
