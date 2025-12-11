@@ -33,8 +33,8 @@ DOTFILES_DIR="$(pwd)"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
 PKG_DIR="$DOTFILES_DIR/pkgs"
-AUTO_MODE=false
-SKIP_UPDATE=false
+#AUTO_MODE=false
+#SKIP_UPDATE=false
 
 export DOTFILES_DIR="$(pwd)"
 export SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
