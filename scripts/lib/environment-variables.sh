@@ -30,9 +30,12 @@ BACKUP_DIR="${BACKUP_DIR:-$HOME/original-dots-backup}"
 #FIRSTRUN_FILE="${DOTS_CORE_CONFDIR}/installed_true"
 
 DOTFILES_DIR="$(pwd)"
-export DOTFILES_DIR
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
 PKG_DIR="$DOTFILES_DIR/pkgs"
 AUTO_MODE=false
 SKIP_UPDATE=false
+
+export DOTFILES_DIR="$(pwd)"
+export SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
+export PYTHON_DIR="$DOTFILES_DIR/scripts/python"
