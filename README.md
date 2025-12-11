@@ -84,14 +84,6 @@ Or use `--skip-update` with `--auto` to automatically install packages and link 
 
 <h4>Please insure bash and the latest python3 version is installed and available.</h4>
 
-Alternately, In a POSIX-Compilant Shell:
-
-```
-source install.sh
-```
-
-`Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
-Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been tested and gave errors.
 
 **Optional:** Customize the pkgs/*.txt files to include the packages you want.
 **WARNING:** Do not remove python3 form the pkgs/*.txt files.
