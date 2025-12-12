@@ -87,3 +87,6 @@ fi
 # Install packages
 run_cmd install_packages "$PKG_DIR/common.txt"
 run_cmd install_packages "$PKG_DIR/${DISTRO}.txt"
+
+install_packages "$PKG_DIR/common.txt"
+install_packages "$PKG/${DISTRO}.txt"
