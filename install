@@ -74,11 +74,11 @@ show_menu() {
 
         read -rp $'\nChoose what to run (or q to quit): ' choice
         case "$choice" in
-            1) v "$SCRIPTS_DIR/${scripts[0]}" ;;
-            2) v "$SCRIPTS_DIR/${scripts[1]}" ;;
-            3) v "$SCRIPTS_DIR/${scripts[2]}" ;;
-            4) v "$SCRIPTS_DIR/${scripts[3]}" ;;
-            5) v "$SCRIPTS_DIR/${scripts[4]}" ;;
+            1) x "$SCRIPTS_DIR/${scripts[0]}" ;;
+            2) x "$SCRIPTS_DIR/${scripts[1]}" ;;
+            3) x "$SCRIPTS_DIR/${scripts[2]}" ;;
+            4) x "$SCRIPTS_DIR/${scripts[3]}" ;;
+            5) x "$SCRIPTS_DIR/${scripts[4]}" ;;
             6|q|Q) echo_cmd "Goodbye!"; break ;;
             *) warn "Invalid choice." ;;
         esac
