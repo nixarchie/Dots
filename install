@@ -42,7 +42,7 @@ USER_SHELL=$(basename "$SHELL")
 #DISTRO="$OS_GROUP_ID"
 #echo $DISTRO
 #echo $OS_GROUP_ID
-print_os_group_id
+#print_os_group_id
 
 export OS_GROUP_ID
 export OS_DISTRO_ID
