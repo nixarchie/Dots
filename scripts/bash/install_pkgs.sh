@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -e
 
+log_cmd()  { echo -e "\033[1;32m───>\033[0m $(pretty_path "$1")"; }
+run_cmd() {
+    # Build a pretty display of the command, replacing $HOME with ~
+    local display_cmd=()
+    for arg in "$@"; do
+        display_cmd+=("$(pretty_path "$arg")")
+    done
+
+    echo -e "\033[1;34m>>> ${display_cmd[*]}\033[0m"
+    "$@"
+}
+
+
 log_cmd "Installing common packages..."
 
 install_packages() {
