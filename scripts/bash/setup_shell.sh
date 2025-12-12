@@ -11,6 +11,7 @@ pretty_path() {
         echo "$path"
     fi
 }
+warn()  { echo -e "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
 
 log "Sourcing shell configs..."
 
