@@ -12,7 +12,15 @@ run_cmd() {
     echo -e "\033[1;34m>>> ${display_cmd[*]}\033[0m"
     "$@"
 }
-
+pretty_path() {
+    local path="$1"
+    # Absolute path starting with $HOME → replace with ~
+    if [[ "$path" == "$HOME"* ]]; then
+        echo "~${path#$HOME}"
+    else
+        echo "$path"
+    fi
+}
 
 log_cmd "Installing common packages..."
 
