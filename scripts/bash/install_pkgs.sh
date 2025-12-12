@@ -22,6 +22,8 @@ pretty_path() {
     fi
 }
 
+echo "[DEBUG] OS_GROUP_ID inside function = '$OS_GROUP_ID'"
+
 log_cmd "Installing common packages..."
 
 install_packages() {
@@ -34,7 +36,7 @@ install_packages() {
 
     [ "${#pkgs[@]}" -eq 0 ] && { log "No packages in $file"; return; }
 
-    case "$DISTRO" in
+    case "$OS_GROUP_ID" in
         arch)
             if command -v yay &>/dev/null; then
                 log_cmd "Installing via yay: ${pkgs[*]}"
@@ -75,7 +77,7 @@ install_packages() {
 }
 
 # Arch: install yay if missing
-if [ "$DISTRO" = "arch" ] && ! command -v yay &>/dev/null; then
+if [ "$OS_GROUP_ID" = "arch" ] && ! command -v yay &>/dev/null; then
     log_cmd "Installing yay (AUR helper)..."
     run_cmd sudo pacman -S --needed --noconfirm base-devel git
     tmpdir=$(mktemp -d)
@@ -85,8 +87,8 @@ if [ "$DISTRO" = "arch" ] && ! command -v yay &>/dev/null; then
 fi
 
 # Install packages
-run_cmd install_packages "$PKG_DIR/common.txt"
-run_cmd install_packages "$PKG_DIR/${DISTRO}.txt"
+#run_cmd install_packages "$PKG_DIR/common.txt"
+#run_cmd install_packages "$PKG_DIR/${DISTRO}.txt"
 
 install_packages "$PKG_DIR/common.txt"
-install_packages "$PKG/${DISTRO}.txt"
+install_packages "$PKG/${OS_GROUP_ID}.txt"
