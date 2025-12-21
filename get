@@ -8,7 +8,7 @@
 #   bash get [parameters]
 
 me="-->online-setup<--"
-remote_repo=nixarchie/Dots
+#remote_repo=nixarchie/Dots
 local_path=~/.cache/dots
 set -e
 function try { "$@" || sleep 0; }
@@ -122,6 +122,36 @@ if [ ! -z "$1" ]; then
   done
 fi
 
+# ─── Menu (Manual Mode) ─────────────────────────
+show_menu() {
+#    header "Nixie's Multi-Distro Bootstrap"
+#    log_cmd "Detected distro: $OS_GROUP_ID"
+#    log_cmd "Detected shell: $USER_SHELL"
+
+    # Menu titles
+    options=(
+        "HTTPS"
+        "SSH"
+    )
+
+    while true; do
+      echo -e "? What is your preferred protocol for Git operations on this host?"
+        for i in "${!options[@]}"; do
+            echo -e "\033[1;32m$((i+1)).\033[0m ${options[$i]}"
+        done
+
+        read -rp $'\nChoose what to run (or q to quit): ' choice
+        case "$choice" in
+            1|"https"|"HTTPS"|h) remote_repo="https://github.com/nixarchie/Dots" ;;
+            2|"ssh"|"SSH"|s) remote_repo="git@github.com:nixarchie/Dots" ;;
+            3|q|Q|e) echo_cmd "Goodbye!"; break ;;
+            *) warn "Invalid choice." ;;
+        esac
+        echo
+    done
+}
+
+
 echo "$me: path to clone: $local_path"
 echo "$me: params to pass: $@"
 
@@ -130,9 +160,10 @@ auto_install_git
 echo "$me: Downloading repo to $local_path ..."
 x mkdir -p $local_path
 x cd $local_path
+x show_menu
 if [ -z "$(ls -A)" ]; then
   x git init -b main
-  x git remote add origin https://github.com/$remote_repo
+  x git remote add origin $remote_repo
 fi
 git remote get-url origin|grep -q $remote_repo || { echo "Dir \"$local_path\" is not empty, nor a git repo of $remote_repo. Aborting..."; exit 1 ; }
 x git pull origin main && git submodule update --init --recursive

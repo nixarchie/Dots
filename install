@@ -89,14 +89,14 @@ show_menu() {
             3) v "$SCRIPTS_DIR/${scripts[2]}" ;;
             4) v "$SCRIPTS_DIR/${scripts[3]}" ;;
             5) v "$SCRIPTS_DIR/${scripts[4]}" ;;
-            6|q|Q) echo_cmd "Goodbye!"; break ;;
+            6|q|Q|e) echo_cmd "Goodbye!"; break ;;
             *) warn "Invalid choice." ;;
         esac
         echo
     done
 }
 
-v show_menu
+x show_menu
 
 # ─── Auto Mode Execution ────────────────────────
 # if $AUTO_MODE; then
