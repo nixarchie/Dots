@@ -8,7 +8,7 @@
 #   bash get [parameters]
 
 me="-->online-setup<--"
-#remote_repo=nixarchie/Dots
+remote_repo=""
 local_path=~/.cache/dots
 set -e
 function try { "$@" || sleep 0; }
@@ -124,37 +124,44 @@ fi
 
 # ─── Menu (Manual Mode) ─────────────────────────
 show_menu() {
-  # Menu titles
-  options=(
-    "HTTPS"
-    "SSH"
-  )
+  options=("HTTPS" "SSH")
 
   while true; do
-    echo -e "? What is your preferred protocol for Git operations on this host?"
+    echo "? What is your preferred protocol for Git operations on this host?"
     for i in "${!options[@]}"; do
       echo -e "\033[1;32m$((i+1)).\033[0m ${options[$i]}"
     done
 
-    read -rp $'\nChoose (eg: 1 2): ' choice
+    read -rp $'\nChoose (eg: 1 or 2): ' choice
     case "$choice" in
-      1|"https"|"HTTPS"|h) remote_repo="https://github.com/nixarchie/Dots.git" break;;
-      2|"ssh"|"SSH"|s) remote_repo="git@github.com:nixarchie/Dots.git" break;;
+      1|https|HTTPS|h)
+        remote_repo="https://github.com/nixarchie/Dots.git"
+        break
+        ;;
+      2|ssh|SSH|s)
+        remote_repo="git@github.com:nixarchie/Dots.git"
+        break
+        ;;
+      *)
+        echo "Invalid choice, try again."
+        ;;
     esac
     echo
   done
 }
 
 
+
 echo "$me: path to clone: $local_path"
-echo "$me: params to pass: $@"
+#echo "$me: params to pass: $@"
 
 detect_distro_id
 auto_install_git
 echo "$me: Downloading repo to $local_path ..."
-x mkdir -p $local_path
-x cd $local_path
-x show_menu
+x mkdir -p "$local_path"
+x cd "$local_path"
+show_menu
+echo "$me: remote repo: $remote_repo"
 if [ -z "$(ls -A)" ]; then
   x git init -b main
   x git remote add origin $remote_repo
