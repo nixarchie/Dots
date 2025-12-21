@@ -138,8 +138,8 @@ show_menu() {
 
     read -rp $'\nChoose (eg: 1 2): ' choice
     case "$choice" in
-      1|"https"|"HTTPS"|h) remote_repo="https://github.com/nixarchie/Dots" break;;
-      2|"ssh"|"SSH"|s) remote_repo="git@github.com:nixarchie/Dots" break;;
+      1|"https"|"HTTPS"|h) remote_repo="https://github.com/nixarchie/Dots.git" break;;
+      2|"ssh"|"SSH"|s) remote_repo="git@github.com:nixarchie/Dots.git" break;;
     esac
     echo
   done
