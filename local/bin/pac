@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -e
+
+echo_cmd() { echo -e "\033[1;32m───\033[0m $(pretty_path "$1")"; }
+pretty_path() {
+  local path="$1"
+  # Absolute path starting with $HOME → replace with ~
+  if [[ "$path" == "$HOME"* ]]; then
+    echo "~${path#$HOME}"
+  else
+    echo "$path"
+  fi
+}
+
+# Colors
+RED='\033[1;31m'
+NC='\033[0m' # No Color
+
+#Clear Line
+CLEAR_LINE='\033[2K\r'
+
+die() {
+  printf "${CLEAR_LINE}${RED}%s${NC}\n" "$*" >&2
+  exit 1
+}
+
+dep_ch() {
+  for dep; do
+    command -v "${dep%% *}" >/dev/null || die "Program \"${dep%% *}\" not found. Please install it."
+  done
+}
+
+printf "${CLEAR_LINE}${BLUE}Checking dependencies...${NC}\n"
+dep_ch "fzf" || true
+
+show_menu() {
+  options=(
+    "Upgrade (yay -Syu)"
+    "Install (pacman)"
+    "Install (AUR)"
+    "Remove (Any)"
+  )
+
+  while true; do
+    echo "? What is your preferred opration?"
+    for i in "${!options[@]}"; do
+      echo -e "\033[1;32m$((i + 1)).\033[0m ${options[$i]}"
+    done
+
+    read -rp $'\nChoose (eg: 1 or 2): ' choice
+    case "$choice" in
+    1 | u | y | upgrade | "yay -Syu")
+      yay -Syu --noconfirm
+      break
+      ;;
+    2 | i | p | pacman)
+      omarchy-pkg-install
+      break
+      ;;
+    3 | "ii" | aur | a)
+      omarchy-pkg-aur-install
+      break
+      ;;
+    4 | r | remove)
+      omarchy-pkg-remove
+      break
+      ;;
+    5 | e | q | Q)
+      echo_cmd "Goodbye!"
+      break
+      ;;
+    *)
+      echo "Invalid choice, try again."
+      ;;
+    esac
+    echo
+  done
+}
+
+show_menu
