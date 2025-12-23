@@ -19,8 +19,13 @@ starship init fish | source
 if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
     cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
 end
-zoxide init fish | source
-atuin init fish | source
+if type -q zoxide
+    zoxide init fish | source
+end
+if type -q atuin
+    autin init fish | source
+end
+
 
 # ── Homebrew
 #if test -d /home/linuxbrew/.linuxbrew
@@ -52,7 +57,7 @@ alias remove="yay -R"
 alias pamcan='pacman'
 
 # ─── Some shell-commands replaced by better ones
-alias history="atuin history list | bat"
+#alias history="atuin history list | bat"
 alias which="yay -Qln" # Always use grep or rg
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
@@ -63,7 +68,7 @@ alias ffetch="fastfetch --config hypr"
 alias grep="rg"
 alias cat="bat"
 alias tree="eza --tree --icons --color=always --git"
-alias cd="z"
+#alias cd="z"
 alias q='qs -c ii'
 
 # ─── Make Test User
