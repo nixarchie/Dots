@@ -32,6 +32,7 @@ dep_ch() {
 
 printf "${CLEAR_LINE}${BLUE}Checking dependencies...${NC}\n"
 dep_ch "fzf" || true
+dep_ch "omarchy-pkg-install" || false
 
 show_menu() {
   options=(
