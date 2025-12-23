@@ -1,7 +1,7 @@
 # ──── User configuration ─────────────────────────────────────────────────────── 
 # ─── Add to MANPATH
 set -x MANPATH /usr/local/man $MANPATH
-export PATH="$HOME/.local/share/omarchy/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/share/omarchy/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/bin/pkgx:/usr/local/bin:$PATH"
 
 # ─── Language environment
 set -x LANG en_US.UTF-8
