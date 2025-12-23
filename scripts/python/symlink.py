@@ -85,5 +85,16 @@ def main():
 
     echo_important("Symlink setup complete!")
 
+    # Symlink local
+    # Symlink config
+    local_dir = DOTFILES_DIR / "local/bin/pkgx"
+    if local_dir.exists():
+        echo_cmd(f"Processing {pretty_path(local_dir)}")
+        link_dir(local_dir, HOME / ".local/bin/pkgx")
+    else:
+        echo_cmd("No local directory in repo, skipping...")
+
+    echo_important("Symlink setup complete!")
+
 if __name__ == "__main__":
     main()
