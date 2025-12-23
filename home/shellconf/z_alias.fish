@@ -1,6 +1,7 @@
 # ──── User configuration ─────────────────────────────────────────────────────── 
 # ─── Add to MANPATH
 set -x MANPATH /usr/local/man $MANPATH
+export PATH="$HOME/.local/share/omarchy/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # ─── Language environment
 set -x LANG en_US.UTF-8
@@ -21,9 +22,11 @@ if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
 end
 if type -q zoxide
     zoxide init fish | source
+    alias cd="z"
 end
 if type -q atuin
     autin init fish | source
+    alias history="atuin history list | bat"
 end
 
 
@@ -52,13 +55,13 @@ alias aliasconf="nvim ~/shellconf/"
 
 # ─── Distro-specific pkg management
 alias upgrade="yay -Syu --noconfirm"
-alias install="yay -S --needed --noconfirm"
-alias remove="yay -R"
+alias install="omarchy-pkg-install"
+alias aur="omarchy-pkg-aur-install"
+alias remove="omarchy-pkg-remove"
 alias pamcan='pacman'
 
 # ─── Some shell-commands replaced by better ones
-#alias history="atuin history list | bat"
-alias which="yay -Qln" # Always use grep or rg
+alias which="yay -Qln" # Always use grep or rg for sanity
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
 # ─── For better or different functions of smae pkgs
@@ -68,7 +71,6 @@ alias ffetch="fastfetch --config hypr"
 alias grep="rg"
 alias cat="bat"
 alias tree="eza --tree --icons --color=always --git"
-#alias cd="z"
 alias q='qs -c ii'
 
 # ─── Make Test User
