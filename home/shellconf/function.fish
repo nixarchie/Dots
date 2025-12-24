@@ -44,15 +44,8 @@ end
 
 # ─── prepare the shell for me to work
 function Dots
-    set mountpoint "/run/media/nixie/Share"
-    set device "/dev/sda2"
-
-    # Check if the device is already mounted
-    if not mount | grep "$mountpoint"
-        echo "Mounting $device to $mountpoint..."
-        sudo mount $device $mountpoint
-    end
+    dots_dir="$HOME/.cache/dots"
 
     # Now cd into the Dots directory
-    cd "$mountpoint/Dots"
+    cd "$dots_dir"
 end
