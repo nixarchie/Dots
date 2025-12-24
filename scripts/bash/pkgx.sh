@@ -10,66 +10,6 @@
 me="-->pkgx-setup<--"
 remote_repo=""
 local_path=~/.local/bin/pkgx
-set -e
-function try { "$@" || sleep 0; }
-function x() {
-  if "$@";then local cmdstatus=0;else local cmdstatus=1;fi # 0=normal; 1=failed; 2=failed but ignored
-  while [ $cmdstatus == 1 ] ;do
-    echo -e "\e[31m$me: Command \"\e[32m$@\e[31m\" has failed."
-    echo -e "You may need to resolve the problem manually BEFORE repeating this command.\e[0m"
-    echo "  r = Repeat this command (DEFAULT)"
-    echo "  e = Exit now"
-    read -p " [R/e]: " p
-    case $p in
-      [eE]) echo -e "\e[34mAlright, will exit.\e[0m";break;;
-      *) echo -e "\e[34mOK, repeating...\e[0m"
-         if "$@";then local cmdstatus=0;else local cmdstatus=1;fi
-         ;;
-    esac
-  done
-  case $cmdstatus in
-    0) echo -e "\e[34m$me: Command \"\e[32m$@\e[34m\" finished.\e[0m";;
-    1) echo -e "\e[31m$me: Command \"\e[32m$@\e[31m\" has failed. Exiting...\e[0m";exit 1;;
-  esac
-}
-
-
-start_ts="$(date +%s)"
-function print_runtime() {
-  local end_ts
-  end_ts="$(date +%s)"
-  local elapsed=$((end_ts - start_ts))
-  local days=$((elapsed / 86400))
-  local hours=$(( (elapsed % 86400) / 3600 ))
-  local minutes=$(( (elapsed % 3600) / 60 ))
-  local seconds=$(( elapsed % 60 ))
-  local human=""
-  if [ "$days" -gt 0 ]; then human="${human}${days}d "; fi
-  if [ "$hours" -gt 0 ]; then human="${human}${hours}h "; fi
-  if [ "$minutes" -gt 0 ]; then human="${human}${minutes}m "; fi
-  human="${human}${seconds}s"
-  echo -e "\e[34m$me: Total runtime: $human (${elapsed} seconds)\e[0m"
-}
-trap print_runtime EXIT
-
-path_using_default_value=true
-if [ ! -z "$1" ]; then
-  while true; do
-    echo "para=$1"
-    case "$1" in
-      "")break;;
-      --)shift;break;;
-      -*)echo "syntax: $0 <path-to-clone> -- <args-to-pass>";exit 1;;
-      *)
-        if "$path_using_default_value";then
-          local_path="$1";path_using_default_value=false
-        else
-          echo "syntax: $0 <path-to-clone> -- <args-to-pass>";exit 1
-        fi
-        shift;;
-    esac
-  done
-fi
 
 function z(){
   echo -e "####################################################"
