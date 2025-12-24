@@ -108,6 +108,7 @@ pkgx_intro() {
     echo -e "\033[1;32m─────>\033[0m   • Unified commands across distros"
     echo -e "\033[1;32m─────>\033[0m   • Optional, non-invasive"
     echo -e "\033[1;32m─────>\033[0m   • Installs to user space by default"
+    echo -e "\033[1;32m─────>\033[0m   • Supports pacman, pkg, and apt."
     echo ""
 }
 
