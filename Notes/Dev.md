@@ -20,3 +20,5 @@
 - Currently only deteching the OS being used by the user and symlinking the dots is in python.
 
 - There are plans for converting the entire repo scripts aside form crutial ones to use pyhon.
+
+- well hello there! Time to mess with a new repo and pkgx. And add opts for hyprland dots(opt-in,arch only) in bootstrap.sh as well as a option to install pkgx in it. And I also have to make an install script for pkgx and a PKGBUILD for aur.
