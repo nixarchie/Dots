@@ -44,7 +44,7 @@ end
 
 # ─── prepare the shell for me to work
 function Dots
-    dots_dir="$HOME/.cache/dots"
+    set dots_dir "$HOME/.cache/dots"
 
     # Now cd into the Dots directory
     cd "$dots_dir"
