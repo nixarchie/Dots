@@ -35,7 +35,7 @@
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/get)"
    ```
 
-- Or clone this repo and run `./install.sh`
+- Or clone this repo and run `./install`
 
 - Review the `get` & `install` script before running if you care about what touches your system.
 
@@ -74,7 +74,7 @@
 - This project is under active development
 - Scripts were written and tested on Arch Linux
 - Back up existing dotfiles before running
-- Run scripts only via `install.sh` and in order
+- Run scripts only via `install` and in order
 
 </div>
 
@@ -85,9 +85,9 @@
 
 This is a template repo that can be forked for private use.
 
-Config files that need to be placed in `~/.config` are to be placed in the `config` dir.
-
 Files that are needed in `~` are to be placed in the `home` dir.
+
+Config files that need to be placed in `~/.config` are to be placed in the `config` dir.
 
 Files needed in `~/.local` are to be placed in the `local` dir.
 
@@ -119,6 +119,8 @@ Files needed in `~/.local` are to be placed in the `local` dir.
   - install_flatpak.sh ( Can be ignored)
 </details>
 
+<h3></h3>
+
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
 - The files in `home/shellconf` are automatically sourced on every new shell session and should be edited to the user’s liking.
@@ -128,12 +130,19 @@ Files needed in `~/.local` are to be placed in the `local` dir.
 <details>
 <summary> Before running the install script, please back up or remove the following directories/files if they already exist:</summary>
   - ~/.bashrc
+
   - ~/.zshrc
+
   - ~/shellconf
+
   - ~/.config/fish
+
   - ~/.config/kitty
+
   - ~/.config/fuzzel
+
   - ~/.config/zshrc.d
+
   - ~/.config/foot
 </details>
 
