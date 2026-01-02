@@ -21,12 +21,9 @@
   <summary>Notable features</summary>
 
 - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
-- **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
+- **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(experimental / lightly tested), and even supports Brew and Flatpak.
 - **Transparent installation**: Every command is shown before it's run.
-
-<!--
-- **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using python.
--->
+- Read it first if you’re paranoid (you should be).
 
 </details>
 <details>
@@ -40,23 +37,18 @@
 
 - Or clone this repo and run `./install.sh`
 
+- Review the `get` & `install` script before running if you care about what touches your system.
+
 </details>
 <details>
   <summary>Repo overview</summary>
   
     Dots/
-    ├── install.sh                 Main entry point, sources modular scripts
+    ├── install                      Main entry point, sources modular scripts
+    ├── get                          Online setup script
     ├── config                       Contains files pointing to $HOME/.config
-    │   ├── fish                     Fish config files
-    │   ├── foot                     Foot config files
-    │   ├── fuzzel                   Fuzzel config files
-    │   └── kitty                    Kitty config files
     ├── home                         Contains files pointing to $HOME
-    │   ├── shellconf                Alis and function files to be listed here
-    │   │   ├── function.fish        Functions for Fish
-    │   │   ├── function.zsh         Functions for Z Shell(zsh)
-    │   │   ├── z_alias.fish         Alias for fish
-    │   │   └── z_alias.zsh          Alias for Z Shell
+    │   ├── shellconf                Alias and function files live here
     │   ├── .bashrc                  Bash config
     │   └── .zshrc                   Zsh config
     ├── pkgs
@@ -67,6 +59,7 @@
     │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
     └── scripts
         ├── bash                     Contains bash scripts
+        ├── lib                      Contains backend shell scripts.
         └── python                   Contains python scripts
 
 - Everything is written in `bash` and `python`.
@@ -75,32 +68,45 @@
 
 </details>
 
-**The user is advised to read the entire README.**
+<div>
+<h2 align="center">• important notes •</h2>
+
+- This project is under active development
+- Scripts were written and tested on Arch Linux
+- Back up existing dotfiles before running
+- Run scripts only via `install.sh` and in order
+
+</div>
 
 <div align="center">
     <h2>• usage •</h2>
     <h3></h3>
 </div>
 
-<!--
-Run `install.sh` with `--auto` to automatically install packages and link configs.
-Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system.
--->
+This is a template repo that can be forked for private use.
 
-If the repo is cloned (one-liner not used) then please use `install` rather `get` for installation.
+Config files that need to be placed in `~/.config` are to be placed in the `config` dir.
 
-<h4>Please insure bash and the latest python3 version is installed and available.</h4>
+Files that are needed in `~` are to be placed in the `home` dir.
+
+Files needed in `~/.local` are to be placed in the `local` dir.
+
+#### Everything is symlinked, do not delete the repo after setup.
 
 
-**Optional:** Customize the pkgs/*.txt files to include the packages you want.
-**WARNING:** Do not remove python3 form the pkgs/*.txt files.
+<h4>Please ensure bash and the latest python3 version is installed and available.</h4>
+
+**Optional:** Customize the `pkgs/*.txt` files to include the packages you want.
+
+**WARNING:** Do not remove `python3` from the `pkgs/*.txt` files.
 
 <div align="center">
     <h2>• notes •</h2>
     <h3></h3>
 </div>
 
-- The scripts should be sourced in the following order for proper setup:
+<details>
+<summary> The scripts should be sourced in the following order for proper setup:</summary>
 
   - update_system.sh ( **WARNING:** the setup may not function properly without it)
 
@@ -111,20 +117,16 @@ If the repo is cloned (one-liner not used) then please use `install` rather `get
   - setup_shell.sh
 
   - install_flatpak.sh ( Can be ignored)
+</details>
 
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
-- Scripts are to be run one at a time through install.sh.
+- The files in `home/shellconf` are automatically sourced on every new shell session and should be edited to the user’s liking.
 
-- **The user is expected to backup important files beforehand**.
+- The hyprland dots are incomplete and not fully functional and are thus removed, if you wish to use a similar setup to mine, use this <a href="https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
 
-- The files present inside `home/shellconf` should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
-
-- The hyprland dots are incomplete and not fully functunal and are thus removed, if you wish to use the approx. same setup as me, use this <a href="https://ii.clsty.link/en/">setup</a> by <a href="https://github.com/end-4">end-4</a>
-
-- The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
-
-- Before running this script, please backup or remove the following directories/files if they already exist:
+<details>
+<summary> Before running the install script, please back up or remove the following directories/files if they already exist:</summary>
   - ~/.bashrc
   - ~/.zshrc
   - ~/shellconf
@@ -133,7 +135,7 @@ If the repo is cloned (one-liner not used) then please use `install` rather `get
   - ~/.config/fuzzel
   - ~/.config/zshrc.d
   - ~/.config/foot
-
+</details>
 
 <div align="center">
     <h3> Enjoy your setup! 🚀 </h3>
@@ -152,7 +154,7 @@ If the repo is cloned (one-liner not used) then please use `install` rather `get
 
 <div align=center>
 
-<h2>• contrubiting •</h2>
+<h2>• contributing •</h2>
 If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit</a>.(I may respond a bit late)
 <h3></h3>
 
@@ -162,8 +164,7 @@ If you have any ideas/improvements feel free to open an issue/pr. Otherwise you 
 
 <div>
 
-<h4>As the project is in devlopement, this README is not always updated. Please do refer to the `Notes` dir for latest changes and plans.</h4>
+#### As the project is in development, this README is not always updated. Please do refer to the `Notes` dir for latest changes and plans.
 
 </div>
 
-**P.S. The scripts were written on Arch Linux and haven’t yet been tested on other distros.**
