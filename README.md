@@ -129,6 +129,7 @@ Files needed in `~/.local` are to be placed in the `local` dir.
 
 <details>
 <summary> Before running the install script, please back up or remove the following directories/files if they already exist:</summary>
+
   - ~/.bashrc
 
   - ~/.zshrc
@@ -171,7 +172,7 @@ If you have any ideas/improvements feel free to open an issue/pr. Otherwise you 
 
 <h2></h2>
 
-<div>
+<div align="center">
 
 #### As the project is in development, this README is not always updated. Please do refer to the `Notes` dir for latest changes and plans.
 
