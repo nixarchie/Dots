@@ -5,6 +5,8 @@
     nix.url = "path:./nix";
   };
 
-  outputs = { nix, ... }:
-    nix.outputs;
+  outputs =
+    { nix, ... }:
+    # just forward everything from nix/flake.nix
+    nix;
 }
