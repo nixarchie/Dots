@@ -1,4 +1,4 @@
-# ──── User configuration ─────────────────────────────────────────────────────── 
+# ──── User configuration ───────────────────────────────────────────────────────
 # ─── Add to MANPATH
 set -x MANPATH /usr/local/man $MANPATH
 export PATH="$HOME/.local/share/omarchy/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/bin/pkgx:/usr/local/bin:$PATH"
@@ -28,7 +28,6 @@ if type -q atuin
     autin init fish | source
     alias history="atuin history list | bat"
 end
-
 
 # ── Homebrew
 #if test -d /home/linuxbrew/.linuxbrew
