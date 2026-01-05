@@ -21,7 +21,7 @@
   <summary>Notable features</summary>
 
 - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
-- **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(experimental / lightly tested), and even supports Brew and Flatpak.
+- **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, Nix(experimental / lightly tested), and even supports Brew and Flatpak.
 - **Transparent installation**: Every command is shown before it's run.
 - Read it first if you’re paranoid (you should be).
 
