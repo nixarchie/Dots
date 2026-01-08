@@ -46,25 +46,27 @@
     Dots/
     ├── install                      Main entry point, sources modular scripts
     ├── get                          Online setup script
-    ├── config                       Contains files pointing to $HOME/.config
-    ├── home                         Contains files pointing to $HOME
-    │   ├── shellconf                Alias and function files live here
+    ├── config/                      Contains files pointing to $HOME/.config
+    ├── home/                        Contains files pointing to $HOME
+    │   ├── shellconf/               Alias and function files live here
     │   ├── .bashrc                  Bash config
     │   └── .zshrc                   Zsh config
-    ├── pkgs
+    ├── pkgs/
     │   ├── arch.txt                 Arch-specific packages
     │   ├── common.txt               Packages installed on all distros
     │   ├── debian.txt               Debian/Ubuntu-specific packages
     │   ├── fedora.txt               Fedora-specific packages
     │   └── nix.txt                  Nix package manager(Works in NixOS & w/o)
-    └── scripts
-        ├── bash                     Contains bash scripts
-        ├── lib                      Contains backend shell scripts.
-        └── python                   Contains python scripts
+    └── scripts/
+        ├── bash/                    Contains bash scripts
+        ├── lib/                     Contains backend shell scripts.
+        └── python/                  Contains python scripts
 
 - Everything is written in `bash` and `python`.
 
 - Note: Only some top-level files are shown; each config folder contains multiple dotfiles.
+
+See the [Repo Structure](../Notes/repo_structure.md) for a collapsible, clickable map of the repo with explanations for each directory.
 
 </details>
 

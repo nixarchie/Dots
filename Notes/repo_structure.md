@@ -32,14 +32,14 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 <pre>
 
     Dots/
-    ├── <a href="#github"> .github</a>
+    ├── c<a href="#github"> .github</a>
     │   └── 󰂺 README.md
-    ├──  Notes
+    ├── c<a href="#notes"> Notes</a>
     │   ├──  Dev.md
     │   ├──  Golden_Rules.md
     │   ├──  lore.md
     │   └──  repo_structure.md
-    ├──  config
+    ├──  <a href="#config">config</a>
     │   ├──  fish
     │   │   ├──  auto-Hypr.fish
     │   │   ├──  config.fish
@@ -57,7 +57,7 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
     │       ├──  auto-Hypr.sh
     │       ├──  dots-hyprland.zsh
     │       └──  shortcuts.zsh
-    ├── 󱂵 home
+    ├── 󱂵 <a href="#home">home</a>
     │   ├── 󰉏 Pictures
     │   │   └──  Wallpapers
     │   ├──  shellconf
@@ -67,15 +67,15 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
     │   │   └──  z_alias.zsh
     │   ├── 󱆃 .bashrc
     │   └── 󱆃 .zshrc
-    ├──  nix
+    ├──  <a href="#nix">nix</a>
     │   └──  flake.nix
-    ├──  pkgs
+    ├──  <a href="#pkgs">pkgs</a>
     │   ├──  arch.txt
     │   ├──  common.txt
     │   ├──  debian.txt
     │   ├──  fedora.txt
     │   └──  nix.txt
-    ├──  scripts
+    ├──  <a href="#scripts">scripts</a>
     │   ├──  bash
     │   │   ├──  detect_os.bash
     │   │   ├──  hl-dots.bash
@@ -109,10 +109,13 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 <details>
     <summary>Status Types</summary>
 
-- Active / Stable  =  Currently used and supported.
-- Doc  =  Documentation.
-- Dead  =  Not supported.
-- WiP  =  Currently work in progress.
+| Status          | Meaning                         |
+|-----------------|---------------------------------|
+| Active / Stable | Currently used and supported    |
+| Doc             | Documentation                   |
+| Dead            | Not supported                   |
+| WiP             | Currently work in progress      |
+
 
 </details>
 
