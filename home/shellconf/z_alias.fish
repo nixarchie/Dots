@@ -60,7 +60,7 @@ alias remove="omarchy-pkg-remove"
 alias pamcan='pacman'
 
 # ─── Some shell-commands replaced by better ones
-alias which="yay -Qln" # Always use grep or rg for sanity
+#alias which="yay -Qln" # Always use grep or rg for sanity
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
 # ─── For better or different functions of smae pkgs
