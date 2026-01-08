@@ -32,9 +32,9 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 <pre>
 
     Dots/
-    ├── c<a href="#github"> .github</a>
+    ├── c<a href="#github">.github</a>
     │   └── 󰂺 README.md
-    ├── c<a href="#notes"> Notes</a>
+    ├── c<a href="#notes">Notes</a>
     │   ├──  Dev.md
     │   ├──  Golden_Rules.md
     │   ├──  lore.md
@@ -58,8 +58,6 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
     │       ├──  dots-hyprland.zsh
     │       └──  shortcuts.zsh
     ├── 󱂵 <a href="#home">home</a>
-    │   ├── 󰉏 Pictures
-    │   │   └──  Wallpapers
     │   ├──  shellconf
     │   │   ├──  function.fish
     │   │   ├──  function.zsh
@@ -128,7 +126,7 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 </div>
 
 <div>
-<h2 align=center>• Notes •</h2>
+<h2 align="center" id="notes">• Notes •</h2>
 
 **Status:** Doc
 - **Dev.md**: Some development notes.
@@ -139,99 +137,88 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 </div>
 
 <div>
-<h2 align=center>• config •</h2>
+<h2 align="center" id="config">• config •</h2>
 
 **Status:** Active / Stable
 
 Represents files that are meant to live directly in `$HOME/.config`
 and are symlinked verbatim.
 
-- fish
+- **fish**:
     - **auto-Hypr.fish**: Launches Hyprland if sourced from tty.
-    -
-    -
-- foot
-    - **foot.ini**:
-- fuzzel
-    - **fuzzel.ini**:
-    - **fuzzel_theme.ini**:
-- kitty
-    - **kitty.conf**
-- zshrc.d
-    - **auto-Hypr.sh**:
-    -
-    -
+    - **config.fish**: Fish config.
+    - **fish_variables**: Stores universal Fish variables.
+- **foot**:
+    - **foot.ini**: Foot terminal config.
+- **fuzzel**:
+    - **fuzzel.ini**: Fuzzel config.
+    - **fuzzel_theme.ini**: Fuzzel Dracula theme.
+- **kitty**:
+    - **kitty.conf**: Kitty terminal config.
+- **zshrc.d**:
+    - **auto-Hypr.sh**: Same functionality as `auto-Hypr.fish`, but for zsh.
+    - **dots-hyprland.zsh**: Uses generated colors. (Using illogical-impulse dotfiles)
 
 </div>
 
 <div>
-<h2 align=center>• home •</h2>
+<h2 align="center" id="home">• home •</h2>
 
 **Status:** Active / Stable
 
 Represents files that are meant to live directly in `$HOME`
 and are symlinked verbatim.
 
--
-    -
-    -
-    -
-    -
--
--
+- **shellconf**:
+    - **function.fish**: Contains `Fish` functions.
+    - **function.zsh**: Contains `Z shell` functions.
+    - **z_alias.fish**: Contains `Fish` alias.
+    - **z_alias.zsh**: Contains `Z shell` alias
+- **.bashrc**: `Bash` config.
+- **.zshrc**: `Z shell` config.
 
 </div>
 
 <div>
-<h2 align=center>• nix •</h2>
+<h2 align="center" id="nix">• nix •</h2>
 
-**Status:** Active / Stable
+**Status:** WiP
 
-Nix flake used for reproducible tooling and package management,
-independent of host distro.
+Represents Nix flake files for reproducible tooling and package management,
+independent of the host distro.
 
--
+- **flake.nix**: Main nix flake for multi-distro support.
 
 </div>
 
 <div>
-<h2 align=center>• pkgs •</h2>
+<h2 align="center" id="pkgs">• pkgs •</h2>
 
 **Status:** Active / Stable
 
-Plain-text package manifests grouped by distro and role,
+Represents plain-text package manifests, grouped by distro and role,
 consumed by install scripts.
 
--
--
--
--
--
-
 </div>
 
+
 <div>
-<h2 align=center>• scripts •</h2>
+<h2 align="center" id="scripts">• scripts •</h2>
 
 **Status:** Active / Stable
--
--
--
--
+
+(To be done)
 
 </div>
 
 <div>
-<h2 align=center>• Root Files •</h2>
+<h2 align="center" id="root">• Root Files •</h2>
 
 **Status:** Active / Stable
 
 Top-level entrypoints and integration glue.
 If unsure, start here.
 
--
--
--
--
+(To be done)
 
 </div>
