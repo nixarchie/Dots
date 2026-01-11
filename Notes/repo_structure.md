@@ -13,6 +13,7 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 
   <details>
   <summary>Icon legend</summary>
+  <pre>
   
 | Icon | Meaning                |
 |------|------------------------|
@@ -29,7 +30,7 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 |     | Text file              |
 |     | Python script          |
 
-  
+  </pre>
   </details>
 
 <pre>
