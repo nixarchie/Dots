@@ -11,10 +11,11 @@ if status is-interactive # Commands to run in interactive sessions can go here
     # No greeting
     set fish_greeting
 
+    source ~/.config/fish/auto-Hypr.fish
+
     # ─── Source all shellconf files ────────────────────────────────
     for f in ~/shellconf/*.fish
-      source $f
+        source $f
     end
-
 
 end

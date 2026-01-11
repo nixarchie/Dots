@@ -14,27 +14,30 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
   <details>
   <summary>Icon legend</summary>
   
-      󰂺   = README
-         = Markdown Doc
-         = github repo config
-         = config dir
-      󱂵   = home dir
-         = Dir
-         = shell script
-      󱁻   = config
-      󱆃   = shell config file
-         = nix 
-         = txt file
-         = python script
+| Icon | Meaning                |
+|------|------------------------|
+| 󰂺    | README                 |
+|     | Markdown Doc           |
+|     | GitHub repo config     |
+|     | Config directory       |
+| 󱂵    | Home directory         |
+|     | Directory              |
+|     | Shell script           |
+| 󱁻    | Config file            |
+| 󱆃    | Shell config file      |
+|     | Nix                    |
+|     | Text file              |
+|     | Python script          |
+
   
   </details>
 
 <pre>
 
     Dots/
-    ├── c<a href="#github">.github</a>
+    ├──  <a href="#github">.github</a>
     │   └── 󰂺 README.md
-    ├── c<a href="#notes">Notes</a>
+    ├──  <a href="#notes">Notes</a>
     │   ├──  Dev.md
     │   ├──  Golden_Rules.md
     │   ├──  lore.md
@@ -113,6 +116,7 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 | Doc             | Documentation                   |
 | Dead            | Not supported                   |
 | WiP             | Currently work in progress      |
+| Dormant         | Not in use                      |
 
 
 </details>
@@ -144,21 +148,41 @@ This document describes the <b>intent</b> and <b>role</b> of each directory, not
 Represents files that are meant to live directly in `$HOME/.config`
 and are symlinked verbatim.
 
-- **fish**:
-    - **auto-Hypr.fish**: Launches Hyprland if sourced from tty.
-    - **config.fish**: Fish config.
-    - **fish_variables**: Stores universal Fish variables.
-- **foot**:
-    - **foot.ini**: Foot terminal config.
-- **fuzzel**:
-    - **fuzzel.ini**: Fuzzel config.
-    - **fuzzel_theme.ini**: Fuzzel Dracula theme.
-- **kitty**:
-    - **kitty.conf**: Kitty terminal config.
-- **zshrc.d**:
-    - **auto-Hypr.sh**: Same functionality as `auto-Hypr.fish`, but for zsh.
-    - **dots-hyprland.zsh**: Uses generated colors. (Using illogical-impulse dotfiles)
 
+<details>
+  <summary><b>fish/</b></summary>
+
+- **auto-Hypr.fish**: Launches Hyprland if sourced from tty.
+- **config.fish**: Fish config.
+- **fish_variables**: Stores universal Fish variables.
+
+</details>
+<details>
+  <summary><b>foot/</b></summary>
+
+- **foot.ini**: Foot terminal config.
+
+</details>
+<details>
+  <summary><b>fuzzel/</b></summary>
+
+- **fuzzel.ini**: Fuzzel config.
+- **fuzzel_theme.ini**: Fuzzel Dracula theme.
+
+</details>
+<details>
+  <summary><b>kitty/</b></summary>
+
+- **kitty.conf**: Kitty terminal config.
+
+</details>
+<details>
+  <summary><b>zshrc.d/</b></summary>
+
+- **auto-Hypr.sh**: Same functionality as `auto-Hypr.fish`, but for zsh.
+- **dots-hyprland.zsh**: Uses generated colors. <sub><a href="https://ii.clsty.link/en">(Using illogical-impulse dotfiles)</a></sub>
+
+</details>
 </div>
 
 <div>
@@ -169,14 +193,21 @@ and are symlinked verbatim.
 Represents files that are meant to live directly in `$HOME`
 and are symlinked verbatim.
 
-- **shellconf**:
-    - **function.fish**: Contains `Fish` functions.
-    - **function.zsh**: Contains `Z shell` functions.
-    - **z_alias.fish**: Contains `Fish` alias.
-    - **z_alias.zsh**: Contains `Z shell` alias
+<details>
+  <summary><b>shellconf/</b></summary>
+
+- **function.fish**: `Fish` functions.
+- **function.zsh**: `Z shell` functions.
+- **z_alias.fish**: `Fish` aliases.
+- **z_alias.zsh**: `Z shell` aliases.
+
+</details>
+<div>
+
 - **.bashrc**: `Bash` config.
 - **.zshrc**: `Z shell` config.
 
+</div>
 </div>
 
 <div>
@@ -187,7 +218,7 @@ and are symlinked verbatim.
 Represents Nix flake files for reproducible tooling and package management,
 independent of the host distro.
 
-- **flake.nix**: Main nix flake for multi-distro support.
+- **flake.nix**: Main `Nix` flake for multi-distro support.
 
 </div>
 
@@ -201,14 +232,45 @@ consumed by install scripts.
 
 </div>
 
-
 <div>
 <h2 align="center" id="scripts">• scripts •</h2>
 
 **Status:** Active / Stable
 
-(To be done)
+<details>
+    <summary><b>bash/</b>: Contains Bash scripts used by installer.</summary>
 
+- **detect_os.bash**: Detects the host operating system at runtime. (Dormant)<sup><a href="#os-detection">1</a></sup>.
+- **hl-dots.bash**: An option for Arch users to install some hyprland dotfiles through official installers. (WiP)
+- **install_flatpak.bash**: Installs flatpak packages. (dead)
+- **install_pkgs.bash**: Installs basic packages through system package manager.
+- **pkgx.bash**: Install `pkgx`, a cross-distro package manager frontend for `apt, pacman, and pkg`. (WiP)
+- **setup_shell.bash**: Sources shell configs.
+- **symlink.bash**: Calls `scripts/python/symlink.py` to symlink dotfiles.
+- **update_system.bash**: Updates system.
+
+</details>
+<details>
+    <summary><b>lib/</b>: Internal helper scripts.</summary>
+
+- **dist-determine.bash**:Detects the host OS at runtime. (Active / Stable)<sup><a href="#os-detection">1</a></sup>.
+- **environment-variables.bash**: Sets some environment variables for the install scripts.
+- **functions.bash**: Has a **lot** of functions in `Bash`.
+
+</details>
+<details>
+    <summary><b>posix/</b>: POSIX-compliant shell scripts.</summary>
+
+- POSIX-compliant `sh` counterparts to `scripts/bash`, intended for systems without `bash` or using `make` for installation. (WiP)
+
+</details>
+<details>
+    <summary><b>python/</b>: Python helpers</summary>
+
+- **detect_os.py**: Detects the host OS at runtime. (Dormant)<sup><a href="#os-detection">1</a></sup>.
+- **symlink.py**: Symlinks dotfiles into `$HOME` and `$HOME/.config`.
+
+</details>
 </div>
 
 <div>
@@ -221,4 +283,31 @@ If unsure, start here.
 
 (To be done)
 
+</div>
+
+---
+
+<div>
+<details id="os-detection">
+<summary>1. OS detection implementations</summary>
+
+This repository currently contains multiple OS detection implementations
+for different runtimes and constraints:
+
+- **scripts/bash/detect_os.bash**  
+  Feature-complete and actively maintained. Not currently in use. Was the first to be implemented.
+
+- **scripts/lib/dist-determine.bash**  
+  Currently used OS detector script.
+
+- **scripts/python/detect_os.py**  
+  Python-based detector, currently dormant.
+
+- **POSIX `sh` detector**  
+  Not available at the moment.
+
+The duplication exists to support different runtimes (Bash, POSIX `sh`,
+and Python) without introducing hard dependencies.
+
+</details>
 </div>
