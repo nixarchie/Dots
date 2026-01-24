@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
+# ─── Continue with your existing vars ──────────
+source ./scripts/lib/environment-variables.bash
+source ./scripts/lib/functions.bash
+source ./scripts/lib/dist-determine.bash
+
 prevent_sudo_or_root
 set -e
 
 # ─── Colors & Logging ─────────────────────────────
-log()   { echo -e "\033[1;32m[INFO]\033[0m $(pretty_path "$1")"; }
-warn()  { echo -e "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
-error() { echo -e "\033[1;31m[ERROR]\033[0m $(pretty_path "$1")"; }
+log()   { printf "\033[1;32m[INFO]\033[0m $(pretty_path "$1")"; }
+warn()  { printf "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
+error() { printf "\033[1;31m[ERROR]\033[0m $(pretty_path "$1")"; }
 
-echo_cmd() { echo -e "\033[1;32m───\033[0m $(pretty_path "$1")"; }
-log_cmd()  { echo -e "\033[1;32m───>\033[0m $(pretty_path "$1")"; }
+echo_cmd() { printf "\033[1;32m───\033[0m $(pretty_path "$1")"; }
+log_cmd()  { printf "\033[1;32m───>\033[0m $(pretty_path "$1")"; }
 run_cmd() {
     # Build a pretty display of the command, replacing $HOME with ~
     local display_cmd=()
@@ -17,11 +22,11 @@ run_cmd() {
         display_cmd+=("$(pretty_path "$arg")")
     done
 
-    echo -e "\033[1;34m>>> ${display_cmd[*]}\033[0m"
+    printf "\033[1;34m>>> ${display_cmd[*]}\033[0m"
     "$@"
 }
 
-header()   { echo -e "\n\033[1;35m─── $1 ───\033[0m\n"; }
+header()   { printf "\n\033[1;35m───── $1 ─────\033[0m\n"; }
 
 pretty_path() {
     local path="$1"
@@ -33,32 +38,24 @@ pretty_path() {
     fi
 }
 
-
-# ─── Continue with your existing vars ──────────
-source ./scripts/lib/environment-variables.sh
-source ./scripts/lib/functions.sh
-source ./scripts/lib/dist-determine.sh
-
 # ─── Detect Shell & Distro ──────────────────────
 USER_SHELL=$(basename "$SHELL")
-#DISTRO="$OS_GROUP_ID"
-#echo $DISTRO
-#echo $OS_GROUP_ID
-#print_os_group_id
+USER_SHELL="${USER_SHELL^}"
 
 export OS_GROUP_ID
 export OS_DISTRO_ID
 export OS_DISTRO_ID_LIKE
-export DISTRO
+export DISTRO="$OS_GROUP_ID"
 export PKG_DIR
 
-
+#printf "OS_GROUP_ID: %s\nOS_DISTRO_ID: %s\nOS_DISTRO_ID_LIKE: %s\nDISTRO: %s\nPKG_DIR: %s\n" "${OS_GROUP_ID}" "${OS_DISTRO_ID}" "${OS_DISTRO_ID_LIKE}" "${DISTRO}" "${PKG_DIR}"
 
 # ─── Menu (Manual Mode) ─────────────────────────
 show_menu() {
     header "Nixie's Multi-Distro Bootstrap"
-    log_cmd "Detected distro: $OS_GROUP_ID"
-    log_cmd "Detected shell: $USER_SHELL"
+    log_cmd "Detected distro: $OS_GROUP_ID\n"
+    log_cmd "Detected shell: $USER_SHELL\n"
+    echo ""
 
     # Menu titles
     options=(
@@ -72,11 +69,11 @@ show_menu() {
 
     # Matching scripts (relative to SCRIPTS_DIR)
     scripts=(
-        "update_system.sh"
-        "install_pkgs.sh"
-        "symlink.sh"
-        "setup_shell.sh"
-        "install_flatpak.sh"
+        "update_system.bash"
+        "install_pkgs.bash"
+        "symlink.bash"
+        "setup_shell.bash"
+        "install_flatpak.bash"
     )
 
     while true; do
@@ -102,19 +99,20 @@ x show_menu
 
 pkgx_intro() {
     echo ""
-    echo ""
-    echo -e "\033[1;32m─────>\033[0m pkgx is a cross-distro package frontend."
-    echo -e "\033[1;32m─────>\033[0m Features:"
-    echo -e "\033[1;32m─────>\033[0m   • Unified commands across distros"
-    echo -e "\033[1;32m─────>\033[0m   • Optional, non-invasive"
-    echo -e "\033[1;32m─────>\033[0m   • Installs to user space by default"
-    echo -e "\033[1;32m─────>\033[0m   • Supports pacman, pkg, and apt."
+    printf "\033[1;32m─────>\033[0m pkgx is a cross-distro package frontend."
+    printf "\n\033[1;32m─────>\033[0m Features:"
+    printf "\n\033[1;32m─────>\033[0m   • Unified commands across distros"
+    printf "\n\033[1;32m─────>\033[0m   • Optional, non-invasive"
+    printf "\n\033[1;32m─────>\033[0m   • Installs to user space by default"
+    printf "\n\033[1;32m─────>\033[0m   • Supports pacman, pkg, and apt.\n"
     echo ""
 }
 
-if [[ -f "$SCRIPTS_DIR/pkgx.sh" ]]; then 
+if [[ -f "$SCRIPTS_DIR/pkgx.bash" ]]; then
+    echo "─────────────────────────────────────────────────────────────────────────────────"
     pkgx_intro
-    source $SCRIPTS_DIR/pkgx.sh
+    echo ""
+    source $SCRIPTS_DIR/pkgx.bash
     showfun install_pkgx
     echo ""
     z install_pkgx

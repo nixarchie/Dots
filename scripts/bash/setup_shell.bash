@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
-log()   { echo -e "\033[1;32m[INFO]\033[0m $(pretty_path "$1")"; }
+log()   { printf "\033[1;32m[INFO]\033[0m $(pretty_path "$1")"; }
 pretty_path() {
     local path="$1"
     # Absolute path starting with $HOME → replace with ~
     if [[ "$path" == "$HOME"* ]]; then
-        echo "~${path#$HOME}"
+        printf "~${path#$HOME}"
     else
-        echo "$path"
+        printf "$path"
     fi
 }
-warn()  { echo -e "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
+warn()  { printf "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
 
 log "Sourcing shell configs..."
 

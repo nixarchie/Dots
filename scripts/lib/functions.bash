@@ -5,24 +5,21 @@
 
 function try { "$@" || sleep 0; }
 function v(){
-  echo -e "####################################################"
-  echo -e "${STY_BLUE}[$0]: Next command:${STY_RST}"
-  echo -e "${STY_GREEN}$*${STY_RST}"
+  printf "\n────────────────────────────────────────────────────────────"
+  printf "\n${STY_BLUE}[$0]: Next command:${STY_RST}"
+  printf " ${STY_GREEN}$*${STY_RST}"
   local execute=true
   if $ask;then
     while true;do
-      echo -e "${STY_BLUE}Execute? ${STY_RST}"
+      printf "\n${STY_BLUE}Execute? ${STY_RST}\n"
       echo "  y = Yes"
       echo "  e = Exit now"
       echo "  s = Skip this command (NOT recommended - your setup might not work correctly)"
-      echo "  yesforall = Yes and don't ask again; NOT recommended unless you really sure"
-      local p; read -p "====> " p
+      local p; read -p "────> " p
       case $p in
-        [yY]) echo -e "${STY_BLUE}OK, executing...${STY_RST}" ;break ;;
-        [eE]) echo -e "${STY_BLUE}Exiting...${STY_RST}" ;exit ;break ;;
-        [sS]) echo -e "${STY_BLUE}Alright, skipping this one...${STY_RST}" ;execute=false ;break ;;
-        "yesforall") echo -e "${STY_BLUE}Alright, won't ask again. Executing...${STY_RST}"; ask=false ;break ;;
-        *) echo -e "${STY_RED}Please enter [y/e/s/yesforall].${STY_RST}";;
+        [yY]) printf "${STY_BLUE}OK, executing...${STY_RST}" ;break ;;
+        [eE]) printf "${STY_BLUE}Exiting...${STY_RST}" ;exit ;break ;;
+        [sS]) printf "${STY_BLUE}Alright, skipping this one...${STY_RST}" ;execute=false ;break ;;
       esac
     done
   fi

@@ -1,11 +1,11 @@
-# Online script for install dots-hyprland.
+# Online script for install 【 Dots — Multi-Distro Bootstrap 】.
 #
 # By design this script is for running via piping to bash:
-#   bash <(curl -s https://ii.clsty.link/get) [parameters]
+#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/get)"
 # Therefore shebang and execute permission are not needed.
 #
 # When running locally for testing, run
-#   bash get [parameters]
+#   bash get
 
 me="-->online-setup<--"
 remote_repo=""

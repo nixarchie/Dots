@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-log()   { echo -e "\033[1;32m[INFO]\033[0m $1"; }
-warn()  { echo -e "\033[1;33m[WARN]\033[0m $1"; }
+log()   { printf "\033[1;32m[INFO]\033[0m $1"; }
+warn()  { printf "\033[1;33m[WARN]\033[0m $1"; }
 
 if [ -f /etc/arch-release ]; then
     DISTRO="arch"

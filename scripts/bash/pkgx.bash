@@ -1,18 +1,18 @@
-# Online script for install dots-hyprland.
+# Online script for install 【 Pkgx 】.
 #
 # By design this script is for running via piping to bash:
-#   bash <(curl -s https://ii.clsty.link/get) [parameters]
+#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/get)"
 # Therefore shebang and execute permission are not needed.
 #
 # When running locally for testing, run
-#   bash get [parameters]
+#   bash get
 
-me="-->pkgx-setup<--"
+me="───>pkgx-setup<───"
 remote_repo=""
 local_path=~/.local/bin/pkgx
 
 function z(){
-  echo -e "####################################################"
+  echo -e "────────────────────────────────────────────────────────────"
   echo -e "${STY_BLUE}[$0]: Next command:${STY_RST}"
   echo -e "${STY_GREEN}$*${STY_RST}"
   local execute=true
@@ -21,7 +21,7 @@ function z(){
       echo -e "${STY_BLUE}Execute? ${STY_RST}"
       echo "  y = Yes"
       echo "  e = Exit now"
-      local p; read -p "====> " p
+      local p; read -p "───> " p
       case $p in
         [yY]) echo -e "${STY_BLUE}OK, executing...${STY_RST}" ;break ;;
         [eE]) echo -e "${STY_BLUE}Exiting...${STY_RST}" ;exit ;break ;;
@@ -41,7 +41,7 @@ show_menu() {
   while true; do
     echo "? What is your preferred protocol for Git operations for pkgx on this host?"
     for i in "${!options[@]}"; do
-      echo -e "\033[1;32m$((i+1)).\033[0m ${options[$i]}"
+      printf "\n\033[1;32m$((i+1)).\033[0m ${options[$i]}\n"
     done
 
     read -rp $'\nChoose (eg: 1 or 2): ' choice

@@ -25,16 +25,11 @@ declare -a TEMP_FILES_TO_CLEANUP=()
 
 # Used by install script
 BACKUP_DIR="${BACKUP_DIR:-$HOME/original-dots-backup}"
-#DOTS_CORE_CONFDIR="${XDG_CONFIG_HOME}/illogical-impulse"
-#INSTALLED_LISTFILE="${DOTS_CORE_CONFDIR}/installed_listfile"
-#FIRSTRUN_FILE="${DOTS_CORE_CONFDIR}/installed_true"
 
 DOTFILES_DIR="$(pwd)"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
 PYTHON_DIR="$DOTFILES_DIR/scripts/python"
 PKG_DIR="$DOTFILES_DIR/pkgs"
-#AUTO_MODE=false
-#SKIP_UPDATE=false
 
 export DOTFILES_DIR="$(pwd)"
 export SCRIPTS_DIR="$DOTFILES_DIR/scripts/bash"
