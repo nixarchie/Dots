@@ -1,7 +1,7 @@
 # Online script for install 【 Pkgx 】.
 #
 # By design this script is for running via piping to bash:
-#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/get)"
+#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/nixarchie/Dots/main/scripts/pkgx.bash)"
 # Therefore shebang and execute permission are not needed.
 #
 # When running locally for testing, run

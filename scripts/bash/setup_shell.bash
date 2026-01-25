@@ -16,13 +16,13 @@ warn()  { printf "\033[1;33m[WARN]\033[0m $(pretty_path "$1")"; }
 log "Sourcing shell configs..."
 
 case "$USER_SHELL" in
-    fish)
+    Fish)
         [ -f "$HOME/.config/fish/config.fish" ] && source "$HOME/.config/fish/config.fish"
         ;;
-    zsh)
+    Zsh)
         [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
         ;;
-    bash)
+    Bash)
         [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
         ;;
     *)
